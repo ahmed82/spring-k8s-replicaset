@@ -5,10 +5,6 @@ SpringBoot to Kubernetes with ReplicaSet.
 
 Kubernetes Master Components: Etcd, API Server, Controller Manager, and Scheduler
 
-
-
-
-
 ## Etcd [https://github.com/etcd-io/etcd]
 etcd is a distributed reliable key-value store for the most critical data of a distributed system, with a focus on being:
 
@@ -51,4 +47,42 @@ When you interact with your Kubernetes cluster using the kubectl command-line in
 1. Kubelet talks to the Docker daemon using the API over the Docker socket to create the container.
 1. Kubelet updates the pod status to the API Server.
 1. API Server persists the new state in etcd.
+
+# Build the project
+
+## Build a Docker Image 
+
+1- Docker cmd build  `<Preferred>`
+```
+ docker build -t ahmedalsalih/spring-k8s:v2.2 .
+```
+or 
+
+2-  Maven build
+```
+./mvnw spring-boot:build-image
+```
+
+## Run the image `FOR TEST ONLY`
+```
+docker run -p 9090:8080 ahmedalsalih/spring-k8s:v2.2
+```
+
+# Push the image to Docker Hub
+
+![Push image](https://github.com/ahmed82/spring-k8s-replicaset/tree/main/src/main/resources/images/1-push-image.PNG?raw=true)
+
+![Docker Hub](https://github.com/ahmed82/spring-k8s-replicaset/blob/main/src/main/resources/images/2-docker-hub.PNG?raw=true)
+
+![k8s-level](./src/main/resources/images/k8s-level.PNG)
+
+# Run Kubernetes
+
+```
+minikube start
+```
+
+```
+kubectl create deployment springk8sapp --image=ahmedalsalih/spring-k8s
+```
 
