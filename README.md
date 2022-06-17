@@ -74,15 +74,64 @@ docker run -p 9090:8080 ahmedalsalih/spring-k8s:v2.2
 
 ![Docker Hub](./src/main/resources/images/2-docker-hub.PNG)
 
-![k8s-level](./src/main/resources/images/k8s-level.PNG)
 
 # Run Kubernetes
-
+run git bash `As Admin` the type:
 ```
 minikube start
 ```
+![image](https://user-images.githubusercontent.com/9446035/174331881-e4215485-5444-480a-8dc1-e4176f9b92a6.png)
+
+## Create deployment
+```
+kubectl create deployment springk8sapp --image=ahmedalsalih/spring-k8s:v2.2
+```
+![image](https://user-images.githubusercontent.com/9446035/174334238-562ac1f3-a4bc-4c42-aa6a-9bde37f5a04b.png)
+
+`deployment and pod created as well.`
+
+![k8s-level](./src/main/resources/images/k8s-level.PNG)
+
+
+## kubectl
 
 ```
-kubectl create deployment springk8sapp --image=ahmedalsalih/spring-k8s
+kubectl get pods
 ```
 
+```
+kubectl get replicaset
+```
+
+```
+kubectl describe pod springk8sapp-64c6ff74cd-86hpv
+```
+if you miss the image corect tak number <Bad creating>
+![image](https://user-images.githubusercontent.com/9446035/174335902-9f9d072f-9712-4269-9789-82d94530fcb1.png)
+<Success deployment creating>
+![image](https://user-images.githubusercontent.com/9446035/174341559-a462d1b3-675e-4e07-8b6a-f87a54db36dc.png)
+
+
+# Dashboard
+```
+minikube dashboard
+```
+
+## Scale a resource / Replicaset
+```
+kubectl scale -n default deployment springk8sapp --replicas=3
+```
+
+## Update deployment
+```
+kubectl apply -f <spec.yaml>
+```
+# create deployment from form
+
+![image](https://user-images.githubusercontent.com/9446035/174345299-862e0fe0-1259-4c35-82e8-33fd7a1fc0c4.png)
+
+ 
+# delete all deployment
+```
+kubectl delete --all deployments
+```
