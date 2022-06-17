@@ -74,7 +74,6 @@ docker run -p 9090:8080 ahmedalsalih/spring-k8s:v2.2
 
 ![Docker Hub](./src/main/resources/images/2-docker-hub.PNG)
 
-
 # Run Kubernetes
 run git bash `As Admin` the type:
 ```
@@ -94,7 +93,6 @@ kubectl create deployment springk8sapp --image=ahmedalsalih/spring-k8s:v2.2
 
 
 ## kubectl
-
 ```
 kubectl get pods
 ```
@@ -106,7 +104,7 @@ kubectl get replicaset
 ```
 kubectl describe pod springk8sapp-64c6ff74cd-86hpv
 ```
-if you miss the image corect tak number <Bad creating>
+When miss the image tag's number <Bad creating>
 ![image](https://user-images.githubusercontent.com/9446035/174335902-9f9d072f-9712-4269-9789-82d94530fcb1.png)
 <Success deployment creating>
 ![image](https://user-images.githubusercontent.com/9446035/174341559-a462d1b3-675e-4e07-8b6a-f87a54db36dc.png)
@@ -135,3 +133,4 @@ kubectl apply -f <spec.yaml>
 ```
 kubectl delete --all deployments
 ```
+
