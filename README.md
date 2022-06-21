@@ -107,7 +107,7 @@ kubectl get replicaset
 kubectl describe pod springk8sapp-64c6ff74cd-86hpv
 ```
 
-<Success deployment creating>
+`Success deployment creating`
 ![image](https://user-images.githubusercontent.com/9446035/174341559-a462d1b3-675e-4e07-8b6a-f87a54db36dc.png)
 
 
@@ -125,13 +125,30 @@ kubectl scale -n default deployment springk8sapp --replicas=3
 ```
 kubectl apply -f <spec.yaml>
 ```
-# create deployment from form
+# Create deployment from form
 
 ![image](https://user-images.githubusercontent.com/9446035/174345299-862e0fe0-1259-4c35-82e8-33fd7a1fc0c4.png)
 
  
-# delete all deployment
+# Delete all deployment
 ```
 kubectl delete --all deployments
 ```
+**Checking** All three comends below should give `No resources found in default namespace.`
+
+```
+kubectl get pods
+```
+```
+kubectl get deployment
+```
+```
+kubectl get replicaset
+```
+# Create deployment `YAML` file
+```
+kubectl apply -f deployment.yaml
+```
+
+
 
