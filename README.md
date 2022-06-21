@@ -109,7 +109,6 @@ kubectl describe pod springk8sapp-64c6ff74cd-86hpv
 
 
 `Success deployment creating`
-
 ![image](https://user-images.githubusercontent.com/9446035/174341559-a462d1b3-675e-4e07-8b6a-f87a54db36dc.png)
 
 
