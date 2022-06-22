@@ -152,5 +152,34 @@ kubectl get replicaset
 kubectl apply -f deployment.yaml
 ```
 
+```
+kubectl get deployment -o wide
+```
+![image](https://user-images.githubusercontent.com/9446035/175048635-0e9ed983-c85c-4a13-bbbd-e541e9b31cb2.png)
 
+## Query by Selctor
+```
+kubectl get pods --selector app=springk8s-app
+```
+![image](https://user-images.githubusercontent.com/9446035/175049041-f84af823-452a-4eb6-80fb-f65072cffa14.png)
 
+# Log
+Checking the pod log using `kubectl logs <Pod name>`
+```
+kubectl logs springk8s-app-deployment-df7f649b7-88zg9
+```
+------------------------------------------------------------------------------------------------------------
+
+## LoadBalancer
+
+```
+minikube tunnel
+```
+
+```
+kubectl expose deployment springk8s-app-deployment --name=springk8s-service --port=80 --target-port=8080 --type=LoadBalancer
+```
+
+```
+kubectl get service
+```
