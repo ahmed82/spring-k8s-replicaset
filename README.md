@@ -130,6 +130,7 @@ kubectl apply -f <spec.yaml>
 
 ![image](https://user-images.githubusercontent.com/9446035/174345299-862e0fe0-1259-4c35-82e8-33fd7a1fc0c4.png)
 
+-----------------==========-------------------Delete---------------------==============----------------
  
 # Delete all deployment
 ```
@@ -147,10 +148,74 @@ kubectl get deployment
 ```
 kubectl get replicaset
 ```
+
 # Create deployment `YAML` file
 ```
 kubectl apply -f deployment.yaml
 ```
 
+```
+kubectl get deployment -o wide
+```
+![image](https://user-images.githubusercontent.com/9446035/175048635-0e9ed983-c85c-4a13-bbbd-e541e9b31cb2.png)
+
+## Query by Selctor
+```
+kubectl get pods --selector app=springk8s-app
+```
+![image](https://user-images.githubusercontent.com/9446035/175049041-f84af823-452a-4eb6-80fb-f65072cffa14.png)
+###############################################################################################################
+# Log
+Checking the pod log using `kubectl logs <Pod name>`
+```
+kubectl logs springk8s-app-deployment-df7f649b7-88zg9
+```
+------------------------------------------------------------------------------------------------------------
+## Quick test `creat deployment & Expose` 
+```
+kubectl create deployment springk8sapp --image=ahmedalsalih/spring-k8s:v2.2
+```
+# Expose the application
+`-type=NodePort` and `--type=LoadBalancer`
+```
+kubectl expose deployment springk8sapps --type=NodePort --port=8080
+```
+
+## LoadBalancer 
+
+```
+minikube tunnel
+```
+```
+kubectl expose deployment springk8s-app-deployment --type=LoadBalancer --port=8080
+```
+or:
+```
+kubectl expose deployment springk8s-app-deployment --name=springk8s-service --port=80 --target-port=8080 --type=LoadBalancer
+```
+```
+kubectl get service
+```
+------------------------------------------------------------------------------------------------------------
+
+
+## Delete service
+
+Display the service wide:
+```
+kubectl get service -o wide
+```
+
+kubectl delete svc <YourServiceName>
+ 
+```
+kubectl delete svc springk8s-app-deployment
+```
+-----------
+## Delete all of the minikube clusters:
+
+```
+minikube delete --all
+```
 
 
